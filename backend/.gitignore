@@ -1,0 +1,38 @@
+# Python-related files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyd
+*.db
+*.sqlite3
+*.log
+
+# Virtual environment
+.venv/
+.env/
+*.env
+
+# FastAPI-specific
+*.db-journal
+*.sqlite-journal
+
+# VS Code settings (optional, only if you're using VS Code)
+.vscode/
+
+# PyCharm settings (optional, only if you're using PyCharm)
+.idea/
+
+# Flask/Django cache files (if you ever use them)
+*.flask
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Other
+*.egg
+*.egg-info/
+dist/
+build/
+*.bak
+*.swp
