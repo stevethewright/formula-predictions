@@ -1,20 +1,21 @@
 import Link from "next/link";
 
-async function getNextRace() {
-  const res = await fetch(`${process.env.APP_URL}/api/event/next`);
-  const data = await res.json();
-  return { data };
-}
+// async function getNextRace() {
+//   const res = await fetch(`${process.env.APP_URL}/api/event/next`);
+//   const data = await res.json();
+//   return { data };
+// }
 
 export default async function Navbar() {
-  const { data } = await getNextRace();
+  // const { data } = await getNextRace();
   return (
     <nav>
       <div className="flex border-b-2 border-red-800 bg-black p-5 text-white">
         <div className="flex">
           <div className="font-black">Formula Predictions</div>
           <div className="font-black">|</div>
-          <div>{data.testContent[0].meeting_name}</div>
+          {/* <div>{data.testContent[0].meeting_name}</div> */}
+          <div>test-race-next</div>
         </div>
         <div className="ml-auto flex gap-3">
           <div>(points status)</div>
