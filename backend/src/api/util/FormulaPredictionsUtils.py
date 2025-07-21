@@ -1,5 +1,13 @@
 import re
 
-# Convert PascalCase → snake_case
-def pascal_to_snake(name):
-  return re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
+def pascal_to_snake(input: str) -> str:
+  """
+  Convert PascalCase string to a to snake_case.
+  """
+  return re.sub(r'(?<!^)(?=[A-Z])', '_', input).lower()
+
+def pascal_dict_to_snake_dict(pascal_dict) -> dict:
+  """
+  Convert a PascalCase dictionary to a snake_case dictionary.
+  """
+  return { pascal_to_snake(k): v for k, v in pascal_dict.items() }
