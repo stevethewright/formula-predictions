@@ -1,21 +1,35 @@
+"use client";
+
+import { Event } from "@/interfaces/Event";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-// async function getNextRace() {
-//   const res = await fetch(`${process.env.APP_URL}/api/event/next`);
-//   const data = await res.json();
-//   return { data };
-// }
+export default function Navbar() {
+  const [data, setData] = useState<Event | undefined>(undefined);
 
-export default async function Navbar() {
-  // const { data } = await getNextRace();
+  const getNextEvent = async () => {
+    const res = await fetch("/api/event/next");
+    const data: Event = await res.json();
+    setData(data);
+  };
+
+  useEffect(() => {
+    getNextEvent();
+  }, []);
+
   return (
     <nav>
       <div className="flex border-b-2 border-red-800 bg-black p-5 text-white">
         <div className="flex">
           <div className="font-black">Formula Predictions</div>
           <div className="font-black">|</div>
-          {/* <div>{data.testContent[0].meeting_name}</div> */}
-          <div>test-race-next</div>
+          {data !== undefined ? (
+            <>
+              <div>{data.officialEventName}</div>
+            </>
+          ) : (
+            <div></div>
+          )}
         </div>
         <div className="ml-auto flex gap-3">
           <div>(points status)</div>
