@@ -1,0 +1,12 @@
+# Dockerfile.serve - formula-predictions-frontend
+# =======================================================
+# For running a live development frontend with hot reload.
+# NOTE: Ensure npm install has been run locally before running this image.
+
+FROM node:22
+
+# Set work dir and expose. Volume will attach app.
+WORKDIR /app
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
