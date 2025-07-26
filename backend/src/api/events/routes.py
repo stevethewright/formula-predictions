@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import fastf1
 
-from api.models.Event import Event
+from models.Event import Event
 from api.util.FormulaPredictionsUtils import pascal_dict_to_snake_dict
 
 router = APIRouter()
@@ -14,4 +14,4 @@ def get_next_event():
     next_normalised_dict = pascal_dict_to_snake_dict(next_dict)
     next_event = Event(**next_normalised_dict)
     return next_event
-  return {"Error": "No remaining events."}
+  return {"error": "No remaining events."}
