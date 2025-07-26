@@ -1,11 +1,11 @@
 services:
   backend:
     build: ./backend
+    hostname: f1-pred-api
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend/src:/app
   frontend:
     build: ./frontend
+    hostname: f1-pred-app
     ports:
       - "3000:3000"
