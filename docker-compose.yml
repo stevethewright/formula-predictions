@@ -9,3 +9,12 @@ services:
     hostname: f1-pred-app
     ports:
       - "3000:3000"
+  db:
+    image: postgres:17.5-alpine3.22
+    env_file:
+      - .env
+    volumes:
+      - f1_pred_db:/var/lib/postgresql/data
+
+volumes:
+  f1_pred_db:
