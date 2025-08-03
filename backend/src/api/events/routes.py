@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 import fastf1
-
 from models.Event import Event
 from api.util.FormulaPredictionsUtils import pascal_dict_to_snake_dict
 

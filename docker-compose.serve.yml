@@ -6,8 +6,13 @@ services:
     hostname: f1-pred-api-dev
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     volumes:
       - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
   frontend:
     build:
       context: ./frontend
@@ -17,12 +22,42 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app
+    depends_on:
+      backend:
+        condition: service_healthy
   db:
     image: postgres:17.5-alpine3.22
+    hostname: f1-pred-db
+    ports:
+      - "5432:5432"
     env_file:
       - .env
     volumes:
       - f1_pred_db:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "$POSTGRES_USER",
+          "-d",
+          "$POSTGRES_DB",
+          "-h",
+          "localhost",
+          "-p",
+          "5432",
+        ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+  pgadmin:
+    image: dpage/pgadmin4:9.6.0
+    ports:
+      - "5050:80"
+    env_file:
+      - .env
 
 volumes:
   f1_pred_db:

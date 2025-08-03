@@ -1,9 +1,8 @@
 from datetime import datetime
-import pandas as pd
-from pydantic.alias_generators import to_camel
-from .pydantic.CamelModel import CamelModel
 
-class Event(CamelModel):
+from .pydantic.CamelCaseModel import CamelCaseModel
+
+class Event(CamelCaseModel):
   round_number: int
   country: str
   location: str
